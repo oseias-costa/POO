@@ -1,28 +1,27 @@
 export class Account {
-    balance: number
+  private _balance: number;
 
-    constructor(){
-        this.balance = 0
+  constructor() {
+    this._balance = 0;
+  }
+
+  consult(): number {
+    return this._balance;
+  }
+
+  deposit(value: number): boolean {
+    if (value >= 0) {
+      this._balance += value;
+      return true;
     }
+    return false;
+  }
 
-    consult(): number {
-        return this.balance
+  withdraw(value: number): boolean {
+    if (this._balance >= value && value >= 0) {
+      this._balance -= value;
+      return true;
     }
-
-    deposit(value: number): boolean {
-        if(value >= 0){
-            this.balance += value
-            return true
-        }
-        return false
-    }
-
-    withdraw(value: number): boolean {
-        if(this.balance >= value && value >= 0){
-            this.balance -= value
-            return true
-        }
-        return false
-    }
-
+    return false;
+  }
 }
